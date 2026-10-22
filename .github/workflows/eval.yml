@@ -34,11 +34,9 @@ jobs:
           PYTHONPATH="." pytest tests/ -v
 
       - name: Run Evaluation Gate
+        if: ${{ secrets.OPENAI_API_KEY != '' }}
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           LLM_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           PYTHONPATH="." python eval/run_eval.py --limit 10
-          
-          # We could enforce performance thresholds (e.g., check if output has specific acc)
-          # A real script would output a JSON and we'd parse it.

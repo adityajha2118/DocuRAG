@@ -48,6 +48,6 @@ The observability layer is tied directly into our CI/CD pipeline:
 - **Full vs Subset:** We maintain a fast, cheap 10-question subset for per-PR gating (`eval.yml`), and a manually triggered 50-question full regression suite (`full_regression.yml`) for comprehensive pre-release checks.
 
 ## 7. How to Run the Dashboard Locally
-1. Start the API: `uvicorn src.api.app:app --reload`
+1. Start the API: `uvicorn src.api:app --reload`
 2. Generate some realistic history: `python scripts/generate_synthetic_traffic.py`
 3. View the dashboard: Open your browser to `http://localhost:8000/dashboard`.
