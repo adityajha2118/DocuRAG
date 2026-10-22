@@ -1,0 +1,32 @@
+{
+  "doc_id": "fastapi_cf45bd5f39af",
+  "source_name": "FastAPI",
+  "url": "https://fastapi.tiangolo.com/tutorial/request-forms-and-files/",
+  "canonical_url": "https://fastapi.tiangolo.com/tutorial/request-forms-and-files/",
+  "title": "Request Forms and Files",
+  "sections": [
+    {
+      "heading": "Request Forms and Files",
+      "heading_level": 1,
+      "content": "You can define files and form fields at the same time using File and Form .\n\nNote\n\nTo receive uploaded files and/or form data, first install python-multipart .\n\nAdd it to your project:\n\n```\n$ uv add python-multipart\n```"
+    },
+    {
+      "heading": "Import File and Form",
+      "heading_level": 2,
+      "content": "```\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, File, Form, UploadFile\n\napp = FastAPI()\n\n@app.post(\"/files/\")\nasync def create_file(\n    file: Annotated[bytes, File()],\n    fileb: Annotated[UploadFile, File()],\n    token: Annotated[str, Form()],\n):\n    return {\n        \"file_size\": len(file),\n        \"token\": token,\n        \"fileb_content_type\": fileb.content_type,\n    }\n```\n\n**🤓 Other versions and variants**\n\nTip\n\nPrefer to use the Annotated version if possible.\n\n```\nfrom fastapi import FastAPI, File, Form, UploadFile\n\napp = FastAPI()\n\n@app.post(\"/files/\")\nasync def create_file(\n    file: bytes = File(), fileb: UploadFile = File(), token: str = Form()\n):\n    return {\n        \"file_size\": len(file),\n        \"token\": token,\n        \"fileb_content_type\": fileb.content_type,\n    }\n```"
+    },
+    {
+      "heading": "Define File and Form parameters",
+      "heading_level": 2,
+      "content": "Create file and form parameters the same way you would for Body or Query :\n\n```\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, File, Form, UploadFile\n\napp = FastAPI()\n\n@app.post(\"/files/\")\nasync def create_file(\n    file: Annotated[bytes, File()],\n    fileb: Annotated[UploadFile, File()],\n    token: Annotated[str, Form()],\n):\n    return {\n        \"file_size\": len(file),\n        \"token\": token,\n        \"fileb_content_type\": fileb.content_type,\n    }\n```\n\n**🤓 Other versions and variants**\n\nTip\n\nPrefer to use the Annotated version if possible.\n\n```\nfrom fastapi import FastAPI, File, Form, UploadFile\n\napp = FastAPI()\n\n@app.post(\"/files/\")\nasync def create_file(\n    file: bytes = File(), fileb: UploadFile = File(), token: str = Form()\n):\n    return {\n        \"file_size\": len(file),\n        \"token\": token,\n        \"fileb_content_type\": fileb.content_type,\n    }\n```\n\nThe files and form fields will be uploaded as form data and you will receive the files and form fields.\n\nAnd you can declare some of the files as bytes and some as UploadFile .\n\nWarning\n\nYou can declare multiple File and Form parameters in a path operation , but you can't also declare Body fields that you expect to receive as JSON, as the request will have the body encoded using multipart/form-data instead of application/json .\n\nThis is not a limitation of FastAPI , it's part of the HTTP protocol."
+    },
+    {
+      "heading": "Recap",
+      "heading_level": 2,
+      "content": "Use File and Form together when you need to receive data and files in the same request."
+    }
+  ],
+  "full_text": "# Request Forms and Files\n\nYou can define files and form fields at the same time using File and Form .\n\nNote\n\nTo receive uploaded files and/or form data, first install python-multipart .\n\nAdd it to your project:\n\n```\n$ uv add python-multipart\n```\n\n## Import File and Form\n\n```\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, File, Form, UploadFile\n\napp = FastAPI()\n\n@app.post(\"/files/\")\nasync def create_file(\n    file: Annotated[bytes, File()],\n    fileb: Annotated[UploadFile, File()],\n    token: Annotated[str, Form()],\n):\n    return {\n        \"file_size\": len(file),\n        \"token\": token,\n        \"fileb_content_type\": fileb.content_type,\n    }\n```\n\n**🤓 Other versions and variants**\n\nTip\n\nPrefer to use the Annotated version if possible.\n\n```\nfrom fastapi import FastAPI, File, Form, UploadFile\n\napp = FastAPI()\n\n@app.post(\"/files/\")\nasync def create_file(\n    file: bytes = File(), fileb: UploadFile = File(), token: str = Form()\n):\n    return {\n        \"file_size\": len(file),\n        \"token\": token,\n        \"fileb_content_type\": fileb.content_type,\n    }\n```\n\n## Define File and Form parameters\n\nCreate file and form parameters the same way you would for Body or Query :\n\n```\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, File, Form, UploadFile\n\napp = FastAPI()\n\n@app.post(\"/files/\")\nasync def create_file(\n    file: Annotated[bytes, File()],\n    fileb: Annotated[UploadFile, File()],\n    token: Annotated[str, Form()],\n):\n    return {\n        \"file_size\": len(file),\n        \"token\": token,\n        \"fileb_content_type\": fileb.content_type,\n    }\n```\n\n**🤓 Other versions and variants**\n\nTip\n\nPrefer to use the Annotated version if possible.\n\n```\nfrom fastapi import FastAPI, File, Form, UploadFile\n\napp = FastAPI()\n\n@app.post(\"/files/\")\nasync def create_file(\n    file: bytes = File(), fileb: UploadFile = File(), token: str = Form()\n):\n    return {\n        \"file_size\": len(file),\n        \"token\": token,\n        \"fileb_content_type\": fileb.content_type,\n    }\n```\n\nThe files and form fields will be uploaded as form data and you will receive the files and form fields.\n\nAnd you can declare some of the files as bytes and some as UploadFile .\n\nWarning\n\nYou can declare multiple File and Form parameters in a path operation , but you can't also declare Body fields that you expect to receive as JSON, as the request will have the body encoded using multipart/form-data instead of application/json .\n\nThis is not a limitation of FastAPI , it's part of the HTTP protocol.\n\n## Recap\n\nUse File and Form together when you need to receive data and files in the same request.",
+  "fetch_timestamp": "2026-09-26T14:51:56.072668+00:00",
+  "content_hash": "6655bc68a6bbe385432d630794f2dd9c"
+}

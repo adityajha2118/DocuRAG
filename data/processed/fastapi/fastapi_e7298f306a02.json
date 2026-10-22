@@ -1,0 +1,37 @@
+{
+  "doc_id": "fastapi_e7298f306a02",
+  "source_name": "FastAPI",
+  "url": "https://fastapi.tiangolo.com/tutorial/request-form-models/",
+  "canonical_url": "https://fastapi.tiangolo.com/tutorial/request-form-models/",
+  "title": "Form Models",
+  "sections": [
+    {
+      "heading": "Form Models",
+      "heading_level": 1,
+      "content": "You can use Pydantic models to declare form fields in FastAPI.\n\nNote\n\nTo use forms, first install python-multipart .\n\nAdd it to your project:\n\n```\n$ uv add python-multipart\n```\n\nNote\n\nThis is supported since FastAPI version 0.113.0 . 🤓"
+    },
+    {
+      "heading": "Pydantic Models for Forms",
+      "heading_level": 2,
+      "content": "You just need to declare a Pydantic model with the fields you want to receive as form fields , and then declare the parameter as Form :\n\n```\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, Form\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nclass FormData(BaseModel):\n    username: str\n    password: str\n\n@app.post(\"/login/\")\nasync def login(data: Annotated[FormData, Form()]):\n    return data\n```\n\n**🤓 Other versions and variants**\n\nTip\n\nPrefer to use the Annotated version if possible.\n\n```\nfrom fastapi import FastAPI, Form\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nclass FormData(BaseModel):\n    username: str\n    password: str\n\n@app.post(\"/login/\")\nasync def login(data: FormData = Form()):\n    return data\n```\n\nFastAPI will extract the data for each field from the form data in the request and give you the Pydantic model you defined."
+    },
+    {
+      "heading": "Check the Docs",
+      "heading_level": 2,
+      "content": "You can verify it in the docs UI at /docs :"
+    },
+    {
+      "heading": "Forbid Extra Form Fields",
+      "heading_level": 2,
+      "content": "In some special use cases (probably not very common), you might want to restrict the form fields to only those declared in the Pydantic model. And forbid any extra fields.\n\nNote\n\nThis is supported since FastAPI version 0.114.0 . 🤓\n\nYou can use Pydantic's model configuration to forbid any extra fields:\n\n```\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, Form\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nclass FormData(BaseModel):\n    username: str\n    password: str\n    model_config = {\"extra\": \"forbid\"}\n\n@app.post(\"/login/\")\nasync def login(data: Annotated[FormData, Form()]):\n    return data\n```\n\n**🤓 Other versions and variants**\n\nTip\n\nPrefer to use the Annotated version if possible.\n\n```\nfrom fastapi import FastAPI, Form\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nclass FormData(BaseModel):\n    username: str\n    password: str\n    model_config = {\"extra\": \"forbid\"}\n\n@app.post(\"/login/\")\nasync def login(data: FormData = Form()):\n    return data\n```\n\nIf a client tries to send some extra data, they will receive an error response.\n\nFor example, if the client tries to send the form fields:\n\n- username : Rick\n- password : Portal Gun\n- extra : Mr. Poopybutthole\n\nThey will receive an error response telling them that the field extra is not allowed:\n\n```\n{\n    \"detail\": [\n        {\n            \"type\": \"extra_forbidden\",\n            \"loc\": [\"body\", \"extra\"],\n            \"msg\": \"Extra inputs are not permitted\",\n            \"input\": \"Mr. Poopybutthole\"\n        }\n    ]\n}\n```"
+    },
+    {
+      "heading": "Summary",
+      "heading_level": 2,
+      "content": "You can use Pydantic models to declare form fields in FastAPI. 😎"
+    }
+  ],
+  "full_text": "# Form Models\n\nYou can use Pydantic models to declare form fields in FastAPI.\n\nNote\n\nTo use forms, first install python-multipart .\n\nAdd it to your project:\n\n```\n$ uv add python-multipart\n```\n\nNote\n\nThis is supported since FastAPI version 0.113.0 . 🤓\n\n## Pydantic Models for Forms\n\nYou just need to declare a Pydantic model with the fields you want to receive as form fields , and then declare the parameter as Form :\n\n```\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, Form\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nclass FormData(BaseModel):\n    username: str\n    password: str\n\n@app.post(\"/login/\")\nasync def login(data: Annotated[FormData, Form()]):\n    return data\n```\n\n**🤓 Other versions and variants**\n\nTip\n\nPrefer to use the Annotated version if possible.\n\n```\nfrom fastapi import FastAPI, Form\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nclass FormData(BaseModel):\n    username: str\n    password: str\n\n@app.post(\"/login/\")\nasync def login(data: FormData = Form()):\n    return data\n```\n\nFastAPI will extract the data for each field from the form data in the request and give you the Pydantic model you defined.\n\n## Check the Docs\n\nYou can verify it in the docs UI at /docs :\n\n## Forbid Extra Form Fields\n\nIn some special use cases (probably not very common), you might want to restrict the form fields to only those declared in the Pydantic model. And forbid any extra fields.\n\nNote\n\nThis is supported since FastAPI version 0.114.0 . 🤓\n\nYou can use Pydantic's model configuration to forbid any extra fields:\n\n```\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, Form\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nclass FormData(BaseModel):\n    username: str\n    password: str\n    model_config = {\"extra\": \"forbid\"}\n\n@app.post(\"/login/\")\nasync def login(data: Annotated[FormData, Form()]):\n    return data\n```\n\n**🤓 Other versions and variants**\n\nTip\n\nPrefer to use the Annotated version if possible.\n\n```\nfrom fastapi import FastAPI, Form\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nclass FormData(BaseModel):\n    username: str\n    password: str\n    model_config = {\"extra\": \"forbid\"}\n\n@app.post(\"/login/\")\nasync def login(data: FormData = Form()):\n    return data\n```\n\nIf a client tries to send some extra data, they will receive an error response.\n\nFor example, if the client tries to send the form fields:\n\n- username : Rick\n- password : Portal Gun\n- extra : Mr. Poopybutthole\n\nThey will receive an error response telling them that the field extra is not allowed:\n\n```\n{\n    \"detail\": [\n        {\n            \"type\": \"extra_forbidden\",\n            \"loc\": [\"body\", \"extra\"],\n            \"msg\": \"Extra inputs are not permitted\",\n            \"input\": \"Mr. Poopybutthole\"\n        }\n    ]\n}\n```\n\n## Summary\n\nYou can use Pydantic models to declare form fields in FastAPI. 😎",
+  "fetch_timestamp": "2026-09-26T14:51:55.992064+00:00",
+  "content_hash": "0ca434544c9bcb064c722c9bac654b6e"
+}

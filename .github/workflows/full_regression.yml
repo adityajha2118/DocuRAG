@@ -1,0 +1,39 @@
+name: Full Regression Eval
+
+on:
+  workflow_dispatch: # Allows manual triggering from GitHub UI
+
+jobs:
+  full_evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Download indices / models (mocked)
+        run: |
+          # In a real environment, you might download your persistent chroma db here
+          echo "Indices downloaded."
+
+      - name: Run Full Evaluation Gate (50 questions)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          LLM_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # Set the DB path so metrics are tracked
+          METRICS_DB_PATH: ./data/metrics.db
+        run: |
+          # Create data dir for DB
+          mkdir -p data
+          
+          # Run without --limit to process all 50 questions
+          # The script will also enforce metrics thresholds (faithfulness, citation coverage, failure rate)
+          PYTHONPATH="." python eval/run_eval.py

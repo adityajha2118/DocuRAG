@@ -1,0 +1,50 @@
+{"query": "How do I create a tensor from a numpy array in PyTorch?", "expected_answer_snippet": "torch.from_numpy", "category": "PyTorch"}
+{"query": "What is the function to compute the cross entropy loss in PyTorch?", "expected_answer_snippet": "torch.nn.CrossEntropyLoss", "category": "PyTorch"}
+{"query": "How can I move a tensor to GPU in PyTorch?", "expected_answer_snippet": ".to('cuda')", "category": "PyTorch"}
+{"query": "How do I define a custom Dataset in PyTorch?", "expected_answer_snippet": "torch.utils.data.Dataset", "category": "PyTorch"}
+{"query": "What optimizer should I use for Adam in PyTorch?", "expected_answer_snippet": "torch.optim.Adam", "category": "PyTorch"}
+{"query": "How to save a model's state_dict in PyTorch?", "expected_answer_snippet": "torch.save", "category": "PyTorch"}
+{"query": "How do I use DataParallel in PyTorch?", "expected_answer_snippet": "nn.DataParallel", "category": "PyTorch"}
+{"query": "What is the purpose of backward() in PyTorch?", "expected_answer_snippet": "gradient", "category": "PyTorch"}
+{"query": "How do I load a pre-trained model in Hugging Face Transformers?", "expected_answer_snippet": "from_pretrained", "category": "Hugging Face"}
+{"query": "What is the AutoTokenizer class in Hugging Face used for?", "expected_answer_snippet": "tokenizer", "category": "Hugging Face"}
+{"query": "How do I push a model to the Hugging Face Hub?", "expected_answer_snippet": "push_to_hub", "category": "Hugging Face"}
+{"query": "What does the pipeline function do in transformers?", "expected_answer_snippet": "pipeline", "category": "Hugging Face"}
+{"query": "How to use the Trainer API in Hugging Face?", "expected_answer_snippet": "Trainer", "category": "Hugging Face"}
+{"query": "How do I set up a text classification pipeline in Hugging Face?", "expected_answer_snippet": "pipeline", "category": "Hugging Face"}
+{"query": "How to generate text using a language model in Hugging Face?", "expected_answer_snippet": "model.generate", "category": "Hugging Face"}
+{"query": "How do I instantiate a Random Forest classifier in scikit-learn?", "expected_answer_snippet": "RandomForestClassifier", "category": "scikit-learn"}
+{"query": "What function is used to scale features in scikit-learn?", "expected_answer_snippet": "StandardScaler", "category": "scikit-learn"}
+{"query": "How to perform a grid search with cross-validation in scikit-learn?", "expected_answer_snippet": "GridSearchCV", "category": "scikit-learn"}
+{"query": "How do I compute the accuracy score in scikit-learn?", "expected_answer_snippet": "accuracy_score", "category": "scikit-learn"}
+{"query": "What is the fit_transform method used for in scikit-learn?", "expected_answer_snippet": "fit", "category": "scikit-learn"}
+{"query": "How to split data into training and test sets in scikit-learn?", "expected_answer_snippet": "train_test_split", "category": "scikit-learn"}
+{"query": "How do I use K-Means clustering in scikit-learn?", "expected_answer_snippet": "KMeans", "category": "scikit-learn"}
+{"query": "How to calculate the confusion matrix in scikit-learn?", "expected_answer_snippet": "confusion_matrix", "category": "scikit-learn"}
+{"query": "How do I declare a path parameter with a type in FastAPI?", "expected_answer_snippet": "def get_item", "category": "FastAPI"}
+{"query": "How can I return a custom status code in FastAPI?", "expected_answer_snippet": "status_code", "category": "FastAPI"}
+{"query": "How do I define a Pydantic model for a request body in FastAPI?", "expected_answer_snippet": "BaseModel", "category": "FastAPI"}
+{"query": "What is the Dependency Injection system in FastAPI?", "expected_answer_snippet": "Depends", "category": "FastAPI"}
+{"query": "How to return a StreamingResponse in FastAPI?", "expected_answer_snippet": "StreamingResponse", "category": "FastAPI"}
+{"query": "How do I configure CORS in a FastAPI application?", "expected_answer_snippet": "CORSMiddleware", "category": "FastAPI"}
+{"query": "How can I serve static files in FastAPI?", "expected_answer_snippet": "StaticFiles", "category": "FastAPI"}
+{"query": "How do I run a FastAPI app using uvicorn?", "expected_answer_snippet": "uvicorn", "category": "FastAPI"}
+{"query": "How do I create a prompt template in LangChain?", "expected_answer_snippet": "PromptTemplate", "category": "LangChain"}
+{"query": "What is the purpose of an LLMChain in LangChain?", "expected_answer_snippet": "LLMChain", "category": "LangChain"}
+{"query": "How can I add memory to a LangChain conversation?", "expected_answer_snippet": "Memory", "category": "LangChain"}
+{"query": "How do I use a document loader in LangChain?", "expected_answer_snippet": "loader", "category": "LangChain"}
+{"query": "What is a RetrievalQA chain in LangChain used for?", "expected_answer_snippet": "RetrievalQA", "category": "LangChain"}
+{"query": "How to use a vector store like Chroma with LangChain?", "expected_answer_snippet": "Chroma", "category": "LangChain"}
+{"query": "How do I create a state graph in LangGraph?", "expected_answer_snippet": "StateGraph", "category": "LangGraph"}
+{"query": "How do I define conditional edges in LangGraph?", "expected_answer_snippet": "add_conditional_edges", "category": "LangGraph"}
+{"query": "How to compile a graph into a runnable application in LangGraph?", "expected_answer_snippet": "compile", "category": "LangGraph"}
+{"query": "What is the purpose of nodes in LangGraph?", "expected_answer_snippet": "add_node", "category": "LangGraph"}
+{"query": "How do I pass state between nodes in LangGraph?", "expected_answer_snippet": "TypedDict", "category": "LangGraph"}
+{"query": "What are the rules of underwater basket weaving?", "expected_answer_snippet": "don't have enough information", "category": "Unsupported"}
+{"query": "How do I cook a perfect medium-rare steak?", "expected_answer_snippet": "don't have enough information", "category": "Unsupported"}
+{"query": "What is the capital of France?", "expected_answer_snippet": "don't have enough information", "category": "Unsupported"}
+{"query": "Who won the World Cup in 2022?", "expected_answer_snippet": "don't have enough information", "category": "Unsupported"}
+{"query": "Tell me a joke about a programmer and a rubber duck.", "expected_answer_snippet": "don't have enough information", "category": "Unsupported"}
+{"query": "xyz123 absolute gibberish nonsense query", "expected_answer_snippet": "don't have enough information", "category": "Unsupported"}
+{"query": "How many toes does a Martian have?", "expected_answer_snippet": "don't have enough information", "category": "Unsupported"}
+{"query": "Can you summarize the plot of Lord of the Rings?", "expected_answer_snippet": "don't have enough information", "category": "Unsupported"}

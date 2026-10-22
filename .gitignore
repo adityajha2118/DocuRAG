@@ -1,0 +1,50 @@
+# Environment & secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+*.so
+.pytest_cache/
+.cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ChromaDB persistent storage
+chroma_db/
+
+# Raw crawled data (large, re-crawlable)
+data/raw/
+
+# Evaluation results (generated, may contain cost-incurring LLM outputs)
+eval/results/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Databases
+*.db
+*.sqlite3
+
+# LLM response cache
+.llm_cache/
+
+# Docker
+*.log

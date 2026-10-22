@@ -1,0 +1,38 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Check syntax and imports
+      run: |
+        # Check that the main pipeline script can be imported without syntax errors
+        python -c "import src.pipeline; print('Pipeline imports successfully!')"
+        python -c "import src.api; print('API imports successfully!')"
+
+    - name: Run Evaluator (Dry Run)
+      # We run the evaluator script with the --help flag just to ensure there are no syntax errors
+      # Actual evaluation would require injecting NVIDIA API keys via GitHub Secrets
+      run: |
+        python eval/run_eval.py --help
